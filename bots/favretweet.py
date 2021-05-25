@@ -20,16 +20,17 @@ class FavRetweetListener(tweepy.StreamListener):
             tweet.user.id == self.me.id:
             # This tweet is a reply or written by me, so ignore it
             return
-        if not tweet.favorited:
+        #if not tweet.favorited:
             # Mark it as Liked
-            try:
-                tweet.favorite()
-            except Exception as e:
-                logger.error("Error on fav", exc_info=True)
+            #try:
+                #tweet.favorite()
+            #except Exception as e:
+                #logger.error("Error on fav", exc_info=True)
         if not tweet.retweeted:
             # Retweet, since we have not retweeted it yet
             try:
                 tweet.retweet()
+                exit() # interim solution to kill the bot
             except Exception as e:
                 logger.error("Error on fav and retweet", exc_info=True)
 
