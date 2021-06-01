@@ -17,7 +17,7 @@ class FavRetweetListener(tweepy.StreamListener):
         if tweet.in_reply_to_status_id is not None or tweet.user.id == self.me.id:
             # This tweet is a reply or written by me, so ignore it
             return
-        if not tweet.favorited:
+        if not tweet.favorited and tweet.user.verified:
             # Mark it as Liked
             try:
                 tweet.favorite()
