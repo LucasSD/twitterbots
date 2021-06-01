@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# tweepy-bots/bots/favretweet.py
-
 import tweepy
 import logging
 from config import create_api
@@ -20,18 +17,17 @@ class FavRetweetListener(tweepy.StreamListener):
         if tweet.in_reply_to_status_id is not None or tweet.user.id == self.me.id:
             # This tweet is a reply or written by me, so ignore it
             return
-        # if not tweet.favorited:
-        # Mark it as Liked
-        # try:
-        # tweet.favorite()
-        # except Exception as e:
-        # logger.error("Error on fav", exc_info=True)
-        if not tweet.retweeted and tweet.user.verified:
-            # Retweet if from verified account and not banned anywhere
+        if not tweet.favorited:
+            # Mark it as Liked
             try:
-                print(tweet.text, tweet.user.name, tweet.user.screen_name)
+                tweet.favorite()
+            except Exception as e:
+                logger.error("Error on fav", exc_info=True)
+        if not tweet.retweeted and tweet.user.verified:
+            # Retweet if from verified account
+            try:
                 tweet.retweet()
-                exit() # interim solution to kill the bot
+                exit()  # interim solution to kill the bot
             except Exception as e:
                 logger.error("Error on fav and retweet", exc_info=True)
 
