@@ -7,7 +7,7 @@ This is a small project demonstrating the use of Twitter bots built using the Tw
 
 ## Technologies
 
-Python 3.9.5, Tweepy 3.10.0
+Python 3.9.5, Tweepy 3.10.0, Black
 
 ## Project Status
 
