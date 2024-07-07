@@ -11,7 +11,7 @@ Python 3.9.5, Tweepy 3.10.0, Black
 
 ## Project Status
 
-Still being developed. Deployment strategy and Retweet frequencies yet to be finalised. 
+On hold. 
 
 ###### To do:
  - decide on final deployment strategy using Google Cloud Functions and Scheduler, or AWS Lambda. 
